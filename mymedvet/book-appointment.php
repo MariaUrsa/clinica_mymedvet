@@ -47,7 +47,7 @@ function getdoctor(val) {
 	$.ajax({
 	type: "POST",
 	url: "get_doctor.php",
-	data:'specilizationid='+val,
+	data:'specializationid='+val,
 	success: function(data){
 		$("#doctor").html(data);
 	}
