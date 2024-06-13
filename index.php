@@ -225,6 +225,7 @@ echo "<script>window.location.href ='index.php'</script>";
         <div class="inner-title">
         <h2>Plan de Asigurare - Petcover</h2>
         <p>Asigurati animalul de companie pentru orice eventualitate (preventie sau boala)</p>
+        <p>Dacă sunteți interesat sunați-ne sau vă așteptăm la o discuție cu doc. veterinar </p>
       </div>
          <div class="row">
                 <!-- Card pentru Planul Basic -->
