@@ -11,14 +11,13 @@ $address=$_POST['address'];
 $city=$_POST['city'];
 $gender=$_POST['gender'];
 
-$sql=mysqli_query($con,"Update users set fullName='$fname',address='$address',city='$city',gender='$gender' where id='".$_SESSION['id']."'");
+$sql=mysqli_query($con,"update users set fullName='$fname',address='$address',city='$city',gender='$gender' where id='".$_SESSION['id']."'");
 if($sql)
 {
 $msg="Profilul s-a actualizat cu succes!";
 
 
 }
-
 }
 ?>
 <!DOCTYPE html>
@@ -88,7 +87,7 @@ $sql=mysqli_query($con,"select * from users where id='".$_SESSION['id']."'");
 while($data=mysqli_fetch_array($sql))
 {
 ?>
-<h4><?php echo htmlentities($data['fullName']);?>'s Profil</h4>
+<h4>Profil <?php echo htmlentities($data['fullName']);?> </h4>
 <p><b>Data de Înregistrare Profil: </b><?php echo htmlentities($data['regDate']);?></p>
 <?php if($data['updateDate']){?>
 <p><b>Data ultimei actualizări a profilului: </b><?php echo htmlentities($data['updateDate']);?></p>
@@ -126,7 +125,6 @@ while($data=mysqli_fetch_array($sql))
 <option value="<?php echo htmlentities($data['gender']);?>"><?php echo htmlentities($data['gender']);?></option>
 <option value="male">Masculin</option>	
 <option value="female">Feminin</option>	
-<option value="other">Altele/Alții</option>	
 </select>
 
 														</div>
@@ -136,7 +134,7 @@ while($data=mysqli_fetch_array($sql))
 																E-mail Utilizator
 															</label>
 					<input type="email" name="uemail" class="form-control"  readonly="readonly"  value="<?php echo htmlentities($data['email']);?>">
-					<a href="change-emaild.php">Actualizare E-mail.</a>
+					<a href="change-emaild.php">Actualizare E-mail</a>
 														</div>
 
 

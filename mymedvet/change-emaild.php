@@ -7,7 +7,7 @@ check_login();
 if(isset($_POST['submit']))
 {
 	$email=$_POST['email'];
-$sql=mysqli_query($con,"Update users set email='$email' where id='".$_SESSION['id']."'");
+$sql=mysqli_query($con,"update users set email='$email' where id='".$_SESSION['id']."'");
 if($sql)
 {
 $msg="E-mailul a fost actualizat cu succes!";
