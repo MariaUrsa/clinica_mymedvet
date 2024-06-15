@@ -5,7 +5,7 @@
 						
 						<!-- start: MAIN NAVIGATION MENU -->
 						<div class="navbar-title">
-							<span>Meniu </span>
+							<span>Meniu Navigare</span>
 						</div>
 						<ul class="main-navigation-menu">
 							<li>
@@ -29,7 +29,7 @@
 											<i class="ti-list"></i>
 										</div>
 										<div class="item-inner">
-											<span class="title"> Istoric Programare </span>
+											<span class="title"> Istoric Programări </span>
 										</div>
 									</div>
 								</a>

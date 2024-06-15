@@ -3,12 +3,12 @@
 					<i class="fa fa-spin fa-gear"></i>
 				</button>
 				<div class="panel-heading">
-					Selectează Stilul
+					Selectează stilul
 				</div>
 				<div class="panel-body">
 					<!-- start: FIXED HEADER -->
 					<div class="setting-box clearfix">
-						<span class="setting-title pull-left">Header fix</span>
+						<span class="setting-title pull-left"> Header fix</span>
 						<span class="setting-switch pull-right">
 							<input type="checkbox" class="js-switch" id="fixed-header" />
 						</span>

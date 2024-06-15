@@ -12,7 +12,7 @@
 							<i class="ti-align-justify"></i>
 						</a>
 						<a class="pull-right menu-toggler visible-xs-block" id="menu-toggler" data-toggle="collapse" href=".navbar-collapse">
-							<span class="sr-only">Meniu</span>
+							<span class="sr-only">Meniu Navigare</span>
 							<i class="ti-view-grid"></i>
 						</a>
 					</div>
@@ -32,10 +32,10 @@
 
 
 
-									<?php $query=mysqli_query($con,"select doctorName from doctors where id='".$_SESSION['id']."'");
+									<?php $query=mysqli_query($con,"select vetdocName from vetdoc where id='".$_SESSION['id']."'");
 while($row=mysqli_fetch_array($query))
 {
-	echo $row['doctorName'];
+	echo $row['vetdocName'];
 }
 									?> <i class="ti-angle-down"></i></i></span>
 								</a>

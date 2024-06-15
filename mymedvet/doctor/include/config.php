@@ -7,6 +7,6 @@ $con = mysqli_connect(DB_SERVER,DB_USER,DB_PASS,DB_NAME);
 // Check connection
 if (mysqli_connect_errno())
 {
- echo "Nu s-a reușit conectarea la MySQL: " . mysqli_connect_error();
+ echo "A esuat conexiunea cu MySQL: " . mysqli_connect_error();
 }
 ?>
