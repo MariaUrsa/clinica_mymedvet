@@ -11,7 +11,14 @@ if(isset($_GET['cancel']))
 mysqli_query($con,"update appointment set vetdocStatus='0' where id ='".$_GET['id']."'");
                   $_SESSION['msg']="Programare anulată!";
 		  }
+elseif ($_GET['active'])
+			{
+   mysqli_query($con,"update appointment set vetdocStatus='1' where id='".$_GET['id']."'");
+				$_SESSION['msg']="Programare activa!";
+				}
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -102,7 +109,7 @@ while($row=mysqli_fetch_array($sql))
 												<td>
 <?php if(($row['userStatus']==1) && ($row['vetdocStatus']==1))  
 {
-	echo "Active";
+	echo "Activ";
 }
 if(($row['userStatus']==0) && ($row['vetdocStatus']==1))  
 {
@@ -117,19 +124,26 @@ if(($row['userStatus']==1) && ($row['vetdocStatus']==0))
 
 
 												?></td>
-												<td >
-												<div class="visible-md visible-lg hidden-sm hidden-xs">
-							<?php if(($row['userStatus']==1) && ($row['vetdocStatus']==1))  
+											</td>
+											<td >
+											<div class="visible-md visible-lg hidden-sm hidden-xs">
+						<?php if(($row['userStatus']==1) && ($row['vetdocStatus']==1))  
 { ?>
 
-													
-	<a href="appointment-history.php?id=<?php echo $row['id']?>&cancel=update" onClick="return confirm('Sigur doriți să anulați această programare?')" class="btn btn-info btn-xs" title="Anulare Programare" tooltip-placement="top" tooltip="Remove">Anulare</a>
-	<?php } else {
+<a href="appointment-history.php?id=<?php echo $row['id']?>&cancel=update" onClick="return confirm('Sigur doriți să anulați această programare?')" class="btn btn-info btn-xs" title="Anulare Programare" tooltip-placement="top" tooltip="Remove">Anulare</a>
+<?php } else {
 
-		echo "Anulat";
-		} ?>
-												</div>
-												</td>
+	echo "Anulat";
+	} ?>
+
+	<?php if(($row['userStatus']==1) && ($row['vetdocStatus']==0))  
+{ ?>
+
+<a href="appointment-history.php?id=<?php echo $row['id']?>&active=update" onClick="return confirm('Sigur doriți să acceptati această programare?')" class="btn btn-info btn-xs" title="Activare Programare" tooltip-placement="top" tooltip="Active">Activare</a>
+<?php } else {
+
+	echo "Activata";
+	} ?>
 											</tr>
 											
 											<?php 
@@ -177,9 +191,9 @@ $cnt=$cnt+1;
 		<script src="vendor/bootstrap-timepicker/bootstrap-timepicker.min.js"></script>
 		<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 		<!-- start: CLIP-TWO JAVASCRIPTS -->
-		<script src="costumstyle/js/main.js"></script>
+		<script src="customstyle/js/main.js"></script>
 		<!-- start: JavaScript Event Handlers for this page -->
-		<script src="costumstyle/js/form-elements.js"></script>
+		<script src="customstyle/js/form-elements.js"></script>
 		<script>
 			jQuery(document).ready(function() {
 				Main.init();

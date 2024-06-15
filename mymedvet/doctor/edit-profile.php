@@ -13,7 +13,7 @@ $docaddress=$_POST['clinicaddress'];
 $docfees=$_POST['docfees'];
 $docphoneNumber=$_POST['docphoneNumber'];
 $docemail=$_POST['docemail'];
-$sql=mysqli_query($con,"Update vetdoc set specialization='$docspecialization',vetdocName='$docname',address='$docaddress',vetdocFees='$docfees',phoneNumber='$docphoneNumber',vetdocEmail='$docemail' where id='".$_SESSION['id']."'");
+$sql=mysqli_query($con,"update vetdoc set specialization='$docspecialization',vetdocName='$docname',address='$docaddress',vetdocFees='$docfees',phoneNumber='$docphoneNumber',vetdocEmail='$docemail' where id='".$_SESSION['id']."'");
 if($sql)
 {
 echo "<script>alert('Detaliile medicului veterinar au fost actualizate cu succes');</script>";
@@ -37,9 +37,9 @@ echo "<script>alert('Detaliile medicului veterinar au fost actualizate cu succes
 		<link href="vendor/select2/select2.min.css" rel="stylesheet" media="screen">
 		<link href="vendor/bootstrap-datepicker/bootstrap-datepicker3.standalone.min.css" rel="stylesheet" media="screen">
 		<link href="vendor/bootstrap-timepicker/bootstrap-timepicker.min.css" rel="stylesheet" media="screen">
-		<link rel="stylesheet" href="costumstyle/css/styles.css">
-		<link rel="stylesheet" href="costumstyle/css/plugins.css">
-		<link rel="stylesheet" href="costumstyle/css/themes/theme-1.css" id="skin_color" />
+		<link rel="stylesheet" href="customstyle/css/styles.css">
+		<link rel="stylesheet" href="customstyle/css/plugins.css">
+		<link rel="stylesheet" href="customstyle/css/themes/theme-1.css" id="skin_color" />
 
 
 	</head>
@@ -81,14 +81,14 @@ echo "<script>alert('Detaliile medicului veterinar au fost actualizate cu succes
 												<div class="panel-body">
 									<?php 
 $did=$_SESSION['dlogin'];
-$sql=mysqli_query($con,"select * from doctors where docEmail='$did'");
+$sql=mysqli_query($con,"select * from vetdoc where vetdocEmail='$did'");
 while($data=mysqli_fetch_array($sql))
 {
 ?>
-<h4><?php echo htmlentities($data['doctorName']);?> Profil</h4>
-<p><b>Profil Dată Înregistrare: </b><?php echo htmlentities($data['creationDate']);?></p>
-<?php if($data['updationDate']){?>
-<p><b>Data ultimei actualizări a profilului: </b><?php echo htmlentities($data['updationDate']);?></p>
+<h4>Profil<?php echo htmlentities($data['vetdocName']);?> </h4>
+<p><b>Profil Dată Înregistrare: </b><?php echo htmlentities($data['createDate']);?></p>
+<?php if($data['updateDate']){?>
+<p><b>Data ultimei actualizări a profilului: </b><?php echo htmlentities($data['updateDate']);?></p>
 <?php } ?>
 <hr />
 													<form role="form" name="adddoc" method="post" onSubmit="return valid();">

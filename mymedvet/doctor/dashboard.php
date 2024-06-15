@@ -23,9 +23,9 @@ if(strlen($_SESSION['id']==0)) {
 		<link href="vendor/select2/select2.min.css" rel="stylesheet" media="screen">
 		<link href="vendor/bootstrap-datepicker/bootstrap-datepicker3.standalone.min.css" rel="stylesheet" media="screen">
 		<link href="vendor/bootstrap-timepicker/bootstrap-timepicker.min.css" rel="stylesheet" media="screen">
-		<link rel="stylesheet" href="costumstyle/css/styles.css">
-		<link rel="stylesheet" href="costumstyle/css/plugins.css">
-		<link rel="stylesheet" href="costumstyle/css/themes/theme-1.css" id="skin_color" />
+		<link rel="stylesheet" href="customstyle/css/styles.css">
+		<link rel="stylesheet" href="customstyle/css/plugins.css">
+		<link rel="stylesheet" href="customstyle/css/themes/theme-1.css" id="skin_color" />
 
 
 	</head>
@@ -129,9 +129,9 @@ if(strlen($_SESSION['id']==0)) {
 		<script src="vendor/bootstrap-timepicker/bootstrap-timepicker.min.js"></script>
 		<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 		<!-- start: CLIP-TWO JAVASCRIPTS -->
-		<script src="costumstyle/js/main.js"></script>
+		<script src="customstyle/js/main.js"></script>
 		<!-- start: JavaScript Event Handlers for this page -->
-		<script src="costumstyle/js/form-elements.js"></script>
+		<script src="customstyle/js/form-elements.js"></script>
 		<script>
 			jQuery(document).ready(function() {
 				Main.init();
