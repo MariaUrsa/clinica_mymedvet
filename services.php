@@ -49,31 +49,27 @@ echo "<script>window.location.href ='index.php'</script>";
 
     <!-- ################# Header #######################--->
     
-   <header id="menu-jk">
+  <header id="menu-jk">
     
         <div id="nav-head" class="header-nav">
             <div class="container">
                 <div class="row">
-                        <div class="col-lg-2 col-md-3  col-sm-12" style="color:#0026ff; font-weight:bold; font-size:35px; margin-top: 1% !important;">MyMedVet
+                        <div class="col-lg-2 col-md-3  col-sm-14" style="color:#0026ff; font-weight:bold; font-size:35px; margin-top: 1% !important;">MyMedVet
                        <a data-toggle="collapse" data-target="#menu" href="#menu" ><i class="fas d-block d-md-none small-menu fa-bars"></i></a>
                     </div>
-                    <div id="menu" class="col-lg-8 col-md-9 d-none d-md-block nav-item">
+                    <div id="menu" class="col-lg-10 col-md-9 d-none d-md-block nav-item">
                         <ul>
-                            <li><a href="index.php">Acasă</a></li>
-                            <li><a href="index.php">Despre Noi</a></li>
-                            <li><a href="index.php">Servicii</a></li>
-                            <li><a href="index.php">Plan Asigurare</a></li>
-                            <li><a href="index.php">Galerie</a></li>
-                            <li><a href="index.php">Contact</a></li>
-                            <li><a href="index.php">Logare</a></li>  
+                            <li><a href="#">Acasă</a></li>
+                            <li><a href="#about_us">Despre Noi</a></li>
+                            <li><a href="#services">Servicii</a></li>
+                            <li><a href="#petcover">Plan Asigurare</a></li>
+                            <li><a href="#gallery">Galerie</a></li>
+                            <li><a href="#contact_us">Contact</a></li>
+                            <li><a href="#logins">Logare</a></li> 
+                            <li><a href="mymedvet/user-login.php" class="btn btn-success" class="d-lg-block appoint">Programează-te</a></li> 
                         </ul>
-                    </div>
-
-                    <div class="col-sm-2 d-none d-lg-block appoint">
-                        <a class="btn btn-success" href="mymedvet/user-login.php">Programează-te</a>
-                    </div>
-                </div>
-
+                    </div> 
+                 </div>
             </div>
         </div>
     </header>
