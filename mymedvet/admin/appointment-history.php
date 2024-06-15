@@ -148,7 +148,8 @@ echo "Încă nu s-a luat nicio măsură";
 															</li>
 														</ul>
 													</div>
-												</div></td>
+												</div>
+											</td>
 											</tr>
 											
 											<?php 

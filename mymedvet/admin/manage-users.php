@@ -4,15 +4,15 @@ error_reporting(0);
 include('include/config.php');
 if(strlen($_SESSION['id']==0)) {
  header('location:logout.php');
-  } else{
+ } else{
 
 if(isset($_GET['del']))
 		  {
 		  	$uid=$_GET['id'];
 		          mysqli_query($con,"delete from users where id ='$uid'");
-                  $_SESSION['msg']="Date șterse!";
+                  $_SESSION['msg']="Date sterse !!";
 		  }
-?>
+?>  
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -108,6 +108,7 @@ while($row=mysqli_fetch_array($sql))
 							
 													
 	<a href="manage-users.php?id=<?php echo $row['id']?>&del=delete" onClick="return confirm('Sunteți sigur că doriți să ștergeți?')"class="btn btn-transparent btn-xs tooltips" tooltip-placement="top" tooltip="Remove"><i class="fa fa-times fa fa-white"></i></a>
+
 												</div>
 												<div class="visible-xs visible-sm hidden-md hidden-lg">
 													<div class="btn-group" dropdown is-open="status.isopen">
