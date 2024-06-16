@@ -13,8 +13,8 @@ $docaddress=$_POST['clinicaddress'];
 $docfees=$_POST['docfees'];
 $doccontactno=$_POST['doccontact'];
 $docemail=$_POST['docemail'];
-$password=md5($_POST['npass']);
-$sql=mysqli_query($con,"insert into vetdoc(specialization,vetdocName,address,vetdocFees,phoneNumber,vetdocEmail,password) values('$docspecialization','$docname','$docaddress','$docfees','$doccontactno','$docemail','$password')");
+$docpassword= hash('sha256', $_POST['password']);
+$sql=mysqli_query($con,"insert into vetdoc(specialization,vetdocName,address,vetdocFees,phoneNumber,vetdocEmail,password) values('$docspecialization','$docname','$docaddress','$docfees','$doccontactno','$docemail','$docpassword')");
 if($sql)
 {
 echo "<script>alert('Informații despre doctorul veterinar au fost adăugate cu succes');</script>";
@@ -174,14 +174,14 @@ while($row=mysqli_fetch_array($ret))
 															<label for="exampleInputPassword1">
 																 Parolă
 															</label>
-					<input type="password" name="npass" class="form-control"  placeholder="New Password" required="required">
+					<input type="password" name="npass" class="form-control"  placeholder="Parola Noua" required="required">
 														</div>
 														
 <div class="form-group">
 															<label for="exampleInputPassword2">
 																Parolă Confirmare
 															</label>
-									<input type="password" name="cfpass" class="form-control"  placeholder="Confirm Password" required="required">
+									<input type="password" name="cfpass" class="form-control"  placeholder="Confirmare Parola" required="required">
 														</div>
 														
 														

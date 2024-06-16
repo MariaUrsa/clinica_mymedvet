@@ -7,7 +7,7 @@ $address=$_POST['address'];
 $city=$_POST['city'];
 $gender=$_POST['gender'];
 $email=$_POST['email'];
-$password=md5($_POST['password']);
+$password=hash('sha256', $_POST['password']);
 $query=mysql_query("insert into users(fullname,address,city,gender,email,password) values('$fname','$address','$city','$gender','$email','$password')");
 if($query)
 {
@@ -70,17 +70,13 @@ if($query)
 									Sex
 								</label>
 								<div class="clip-radio radio-primary">
-									<input type="radio" id="rg-female" name="gender" value="female" >
+									<input type="radio" id="rg-female" name="gender" value="feminin" >
 									<label for="rg-female">
 										Feminin
 									</label>
-									<input type="radio" id="rg-male" name="gender" value="male">
+									<input type="radio" id="rg-male" name="gender" value="masculin">
 									<label for="rg-male">
 										Masculin
-									</label>
-									<input type="radio" id="rg-other" name="gender" value="other">
-									<label for="rg-other">
-										Altele/Alții
 									</label>
 								</div>
 							</div>
