@@ -5,7 +5,7 @@ error_reporting(0);
 if(isset($_POST['submit']))
 {
 $uname=$_POST['username'];
-$dpassword=md5($_POST['password']);	
+$dpassword=hash('sha256', $_POST['password']);
 $ret=mysqli_query($con,"SELECT * FROM vetdoc WHERE vetdocEmail='$uname' and password='$dpassword'");
 $num=mysqli_fetch_array($ret);
 if($num>0)

@@ -7,7 +7,7 @@ if(isset($_POST['change']))
 {
 $cno=$_SESSION['cnumber'];
 $email=$_SESSION['email'];
-$newpassword=md5($_POST['password']);
+$newpassword=hash('sha256', $_POST['password']);
 $query=mysqli_query($con,"update vetdoc set password='$newpassword' where phoneNumber='$cno' and vetdocEmail='$email'");
 if ($query) {
 echo "<script>alert('Parola a fost actualizată cu succes.');</script>";
@@ -32,9 +32,9 @@ echo "<script>window.location.href ='index.php'</script>";
 		<link href="vendor/animate.css/animate.min.css" rel="stylesheet" media="screen">
 		<link href="vendor/perfect-scrollbar/perfect-scrollbar.min.css" rel="stylesheet" media="screen">
 		<link href="vendor/switchery/switchery.min.css" rel="stylesheet" media="screen">
-		<link rel="stylesheet" href="costumstyle/css/styles.css">
-		<link rel="stylesheet" href="costumstyle/css/plugins.css">
-		<link rel="stylesheet" href="costumstyle/css/themes/theme-1.css" id="skin_color" />
+		<link rel="stylesheet" href="customstyle/css/styles.css">
+		<link rel="stylesheet" href="customstyle/css/plugins.css">
+		<link rel="stylesheet" href="customstyle/css/themes/theme-1.css" id="skin_color" />
 
 				<script type="text/javascript">
 function valid()

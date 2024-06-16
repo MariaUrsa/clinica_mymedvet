@@ -9,13 +9,13 @@ date_default_timezone_set('Europe/Bucharest');
 $currentTime = date( 'd-m-Y h:i:s A', time () );
 if(isset($_POST['submit']))
 {
-$cpass=md5($_POST['cpass']);
+$cpass=hash('sha256', $_POST['password']);
 $did=$_SESSION['id'];
-$sql=mysqli_query($con,"SELECT password FROM  vetdoc where password='$cpass' && id='$did'");
+$sql=mysqli_query($con,"SELECT password FROM vetdoc where password='$cpass' && id='$did'");
 $num=mysqli_fetch_array($sql);
 if($num>0)
 {
-$npass=md5($_POST['npass']);
+$npass=hash('sha256', $_POST['password']);
  $con=mysqli_query($con,"update vetdoc set password='$npass', updateDate='$currentTime' where id='$did'");
 $_SESSION['msg1']="Parola a fost schimbată cu succes!";
 }

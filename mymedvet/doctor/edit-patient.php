@@ -127,18 +127,17 @@ Număr Telefon Proprietar
 <label for="fess">
 E-mail Proprietar
 </label>
-<input type="email" id="patowneremail" name="patowneremail" class="form-control"  value="<?php  echo $row['PatientOwnerEmail'];?>" readonly='true'>
-<span id="email-availability-status"></span>
+<input type="email" id="patowneremail" name="patowneremail" class="form-control" placeholder="Introduceți E-mail Proprietar" required="true">
 </div>
 <div class="form-group">
               <label class="control-label">Pacient Gen: </label>
-              <?php  if($row['Gender']=="Female"){ ?>
-              <input type="radio" name="gender" id="gender" value="Female" checked="true">Femelă
-              <input type="radio" name="gender" id="gender" value="male">Mascul
+              <?php  if($row['Gender']=="Femala"){ ?>
+              <input type="radio" name="gender" id="gender" value="Femela" checked="true">Femelă
+              <input type="radio" name="gender" id="gender" value="Mascul">Mascul
               <?php } else { ?>
               <label>
-              <input type="radio" name="gender" id="gender" value="Male" checked="true">Mascul
-              <input type="radio" name="gender" id="gender" value="Female">Femelă
+              <input type="radio" name="gender" id="gender" value="Mascul" checked="true">Mascul
+              <input type="radio" name="gender" id="gender" value="Femela">Femelă
               </label>
              <?php } ?>
             </div>
