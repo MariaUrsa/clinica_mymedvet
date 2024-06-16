@@ -13,6 +13,6 @@ Se va folosi PHP și MySQL
 Detalii de conectare
 admin : admin / Admin*123
 
-user: maria.irimia@gmail.com / Maria*123
+user: ioana.marinescu@gmail.com / Ioana*123
 
-vetdoc: abrudan.mymedvet@gmail.com / Abrudan*123
+vetdoc: gruia.mymedvet@gmail.com / Gruia*963
