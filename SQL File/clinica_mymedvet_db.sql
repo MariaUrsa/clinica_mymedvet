@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 13, 2024 at 09:56 AM
+-- Generation Time: Jun 16, 2024 at 10:29 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -39,7 +39,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `username`, `password`, `updateDate`) VALUES
-(1, 'admin', 'Admin*123', '06-06-2024 11:42:05 AM');
+(1, 'admin', 'Admin*123', '16-06-2024 06:12:49 PM');
 
 -- --------------------------------------------------------
 
@@ -66,7 +66,7 @@ CREATE TABLE `appointment` (
 --
 
 INSERT INTO `appointment` (`id`, `vetdocSpecialization`, `vetdocId`, `userId`, `consultancyFees`, `appointmentDate`, `appointmentTime`, `postingDate`, `userStatus`, `vetdocStatus`, `updateDate`) VALUES
-(4, 'Ortopedie, Chirurgie și Medicină Internă', 1, 5, 50, '2024-06-14', '12:30 PM', '2024-06-12 21:19:11', 1, 1, NULL);
+(6, 'Ortopedie, Chirurgie și Medicină Internă', 1, 2, 50, '2024-06-17', '9:00 AM', '2024-06-16 15:58:39', 1, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -86,6 +86,13 @@ CREATE TABLE `tblcontactus` (
   `IsRead` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `tblcontactus`
+--
+
+INSERT INTO `tblcontactus` (`id`, `fullname`, `email`, `phoneNumber`, `message`, `PostingDate`, `AdminRemark`, `LastupdateDate`, `IsRead`) VALUES
+(3, 'Marinescu Rebeca', 'rebeca.marinescu@gmail.com', 7714888999, 'Buna ziua,\r\ncainele meu s-a ranit la laba piciorului stang si nu mai poate calca norma. Nu stiu ce sa fac! Sunt plecata din localitate, va rog sa ma contactati pe mobil! Multumesc!', '2024-06-13 12:56:57', 'citit, va fii sunat', '2024-06-13 13:00:08', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -95,13 +102,20 @@ CREATE TABLE `tblcontactus` (
 CREATE TABLE `tblmedicalhistory` (
   `ID` int(10) NOT NULL,
   `PatientID` int(10) DEFAULT NULL,
-  `BloodPressure` varchar(200) DEFAULT NULL,
+  `Pulse` varchar(200) DEFAULT NULL,
   `Breathe` varchar(200) NOT NULL,
   `Weight` varchar(100) DEFAULT NULL,
   `Temperature` varchar(200) DEFAULT NULL,
   `MedicalPres` mediumtext DEFAULT NULL,
   `CreateDate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tblmedicalhistory`
+--
+
+INSERT INTO `tblmedicalhistory` (`ID`, `PatientID`, `Pulse`, `Breathe`, `Weight`, `Temperature`, `MedicalPres`, `CreateDate`) VALUES
+(1, 1, '75', '25', '45', '38', 'stare normala', '2024-06-17 06:11:18');
 
 -- --------------------------------------------------------
 
@@ -146,11 +160,19 @@ CREATE TABLE `tblpatient` (
   `PatientSpecies` varchar(200) DEFAULT NULL,
   `PatientGender` varchar(50) DEFAULT NULL,
   `PatientAddress` mediumtext DEFAULT NULL,
-  `PatientAge` int(10) DEFAULT NULL,
+  `PatientAge` varchar(100) DEFAULT NULL,
   `PatientMedhis` mediumtext DEFAULT NULL,
   `CreateDate` timestamp NULL DEFAULT current_timestamp(),
   `UpdateDate` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tblpatient`
+--
+
+INSERT INTO `tblpatient` (`ID`, `VetDocid`, `PatientName`, `PatientRECS`, `PatientOwnerName`, `PatientOwnerCNP`, `PatientOwnerPhoneNumber`, `PatientOwnerEmail`, `PatientSpecies`, `PatientGender`, `PatientAddress`, `PatientAge`, `PatientMedhis`, `CreateDate`, `UpdateDate`) VALUES
+(1, 1, 'Lucky', 625040058529459, 'Vladimir Ioan', 190814020093, '07714255344', 'ioan.vladimir@gmail.com', 'canin ciobanesc german', 'mascul', 'Str. Stefan Cel Mare nr.3, Arad', '2 ani', 'sanatos', '2024-06-16 15:48:09', NULL),
+(4, 14, 'Happy', 6650400585272, 'Marinescu Ioana', 290121020045, '774152035', 'ioana.marinescu@gmail.com', 'canin, bishon maltez', 'female', 'Str. Caransebes nr.9, Arad', '8 luni', 'sanatoasa', '2024-06-16 16:23:13', NULL);
 
 -- --------------------------------------------------------
 
@@ -173,9 +195,8 @@ CREATE TABLE `userlog` (
 --
 
 INSERT INTO `userlog` (`id`, `uid`, `username`, `userip`, `loginTime`, `logout`, `status`) VALUES
-(4, 4, 'gruia.marin@gmail.com', 0x3a3a3100000000000000000000000000, '2024-06-11 17:10:18', '11-06-2024 08:17:59 PM', 1),
-(5, 5, 'maria.irimia@gmail.com', 0x3a3a3100000000000000000000000000, '2024-06-12 19:41:55', '13-06-2024 12:03:47 AM', 1),
-(6, 5, 'maria.irimia@gmail.com', 0x3a3a3100000000000000000000000000, '2024-06-12 21:08:19', NULL, 1);
+(1, 1, 'ioana.marinescu@gmail.com', 0x3a3a3100000000000000000000000000, '2024-06-16 14:25:41', '16-06-2024 05:32:07 PM', 1),
+(19, 2, 'ioan.vladimir@gmail.com', 0x3a3a3100000000000000000000000000, '2024-06-16 15:57:28', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -200,8 +221,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `fullName`, `address`, `city`, `gender`, `email`, `password`, `regDate`, `updateDate`) VALUES
-(4, 'Gruia Marian', 'Str. Paris Nr. 5', 'Arad', 'male', 'gruia.marin@gmail.com', 'f082ac9ea6e6781af1b4c9fd7dfa2189', '2024-06-11 17:10:00', NULL),
-(5, 'Maria Irimia', 'Str. Maslinului nr.4', 'Arad', 'female', 'maria.irimia@gmail.com', '488c553ff5e963e7452adc0fa51e49ad', '2024-06-12 19:41:40', NULL);
+(1, 'Marinescu Ioana', 'Str. Caransebes nr. 9', 'Arad', 'feminin', 'ioana.marinescu@gmail.com', '819f7cca8ad8a65fcdbcc85e5f3e053e48da5ce030c19910872c0817f8e03867', '2024-06-16 14:19:33', NULL),
+(2, 'Vladimir Ioan', 'Str. Stefan Cel Mare nr. 3', 'Arad', 'masculin', 'ioan.vladimir@gmail.com', '70aed02327eed81fd0e57e2cb29269dce740c039eb9b759404f8ad49df1c6e41', '2024-06-16 15:46:33', NULL);
 
 -- --------------------------------------------------------
 
@@ -227,8 +248,8 @@ CREATE TABLE `vetdoc` (
 --
 
 INSERT INTO `vetdoc` (`id`, `specialization`, `vetdocName`, `address`, `vetdocFees`, `phoneNumber`, `vetdocEmail`, `password`, `createDate`, `updateDate`) VALUES
-(1, 'Ortopedie, Chirurgie și Medicină Internă', 'Dr. Vet. Abrudan Sergiu', 'Str. Magheran nr. 17, Arad 310241 Romania', '50', 741555333, 'abrudan.mymedvet@gmail.com', 'ec0736457cdff0181b65fcbb9e166058', '2024-06-11 17:47:19', '2024-06-12 20:46:09'),
-(9, 'Oncologie, Chirurgie și Medicină Internă', 'Dr.Vet. Miriam Ferencz', 'Str. Magheran nr.17, Arad, Romania', '50', 7745220441, 'miriam.mymedvet@gmail.com', 'db2321cd5bc124b6145c902277efdd32', '2024-06-12 21:08:11', NULL);
+(1, 'Ortopedie, Chirurgie și Medicină Internă', 'Gruia Mihai', 'Str. Magherean nr.17, Arad, 310241, Romania', '50', 7741255780, 'gruia.mymedvet@gmail.com', 'b84127ead41537aff575a49e375ab81de748a555b0b0c1eb15e21ad82e7adebb', '2024-06-16 15:30:26', '2024-06-16 15:51:18'),
+(14, 'Oncologie, Chirurgie și Medicină Internă', 'Vent Mirabela', 'Str. Magherean nr.17, Arad, 310241 Romania', '60', 7741255781, 'vent.mymedvet@gmail.com', '9b3523231acd48f54e232948d8bc9c8fa93c9f00c3957761bd4f65f6767452ad', '2024-06-16 16:06:30', '2024-06-16 16:14:37');
 
 -- --------------------------------------------------------
 
@@ -245,6 +266,20 @@ CREATE TABLE `vetdoclog` (
   `logout` varchar(255) DEFAULT NULL,
   `status` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `vetdoclog`
+--
+
+INSERT INTO `vetdoclog` (`id`, `uid`, `username`, `userip`, `loginTime`, `logout`, `status`) VALUES
+(13, NULL, 'gruia.mymedvet@gmail.com', 0x3a3a3100000000000000000000000000, '2024-06-16 15:30:53', NULL, 0),
+(14, 13, 'gruia.mymedvet@gmail.com', 0x3a3a3100000000000000000000000000, '2024-06-16 15:37:48', NULL, 1),
+(15, NULL, 'gruia.mymedvet@gmail.com', 0x3a3a3100000000000000000000000000, '2024-06-16 16:00:13', NULL, 0),
+(16, 1, 'gruia.mymedvet@gmail.com', 0x3a3a3100000000000000000000000000, '2024-06-16 16:00:35', '16-06-2024 07:03:37 PM', 1),
+(17, NULL, 'vent.mymedvet@gmail.com', 0x3a3a3100000000000000000000000000, '2024-06-16 16:06:51', NULL, 0),
+(18, NULL, 'vent.mymedvet@gmail.com', 0x3a3a3100000000000000000000000000, '2024-06-16 16:12:31', NULL, 0),
+(19, NULL, 'vent.mymedvet@gmail.com', 0x3a3a3100000000000000000000000000, '2024-06-16 16:13:58', NULL, 0),
+(20, 14, 'vent.mymedvet@gmail.com', 0x3a3a3100000000000000000000000000, '2024-06-16 16:15:43', '16-06-2024 07:29:46 PM', 1);
 
 -- --------------------------------------------------------
 
@@ -277,7 +312,8 @@ INSERT INTO `vetdocspecialization` (`id`, `specialization`, `createDate`, `updat
 -- Indexes for table `admin`
 --
 ALTER TABLE `admin`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `username` (`username`);
 
 --
 -- Indexes for table `appointment`
@@ -295,7 +331,8 @@ ALTER TABLE `tblcontactus`
 -- Indexes for table `tblmedicalhistory`
 --
 ALTER TABLE `tblmedicalhistory`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `PatientID` (`PatientID`);
 
 --
 -- Indexes for table `tblpage`
@@ -307,7 +344,11 @@ ALTER TABLE `tblpage`
 -- Indexes for table `tblpatient`
 --
 ALTER TABLE `tblpatient`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `VetDocid` (`VetDocid`),
+  ADD KEY `PatientOwnerName` (`PatientOwnerName`),
+  ADD KEY `PatientOwnerEmail` (`PatientOwnerEmail`),
+  ADD KEY `PatientAddress` (`PatientAddress`(768));
 
 --
 -- Indexes for table `userlog`
@@ -320,7 +361,9 @@ ALTER TABLE `userlog`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `email` (`email`);
+  ADD KEY `email` (`email`),
+  ADD KEY `fullName` (`fullName`),
+  ADD KEY `address` (`address`(768));
 
 --
 -- Indexes for table `vetdoc`
@@ -354,19 +397,19 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tblcontactus`
 --
 ALTER TABLE `tblcontactus`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tblmedicalhistory`
 --
 ALTER TABLE `tblmedicalhistory`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tblpage`
@@ -378,31 +421,31 @@ ALTER TABLE `tblpage`
 -- AUTO_INCREMENT for table `tblpatient`
 --
 ALTER TABLE `tblpatient`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `userlog`
 --
 ALTER TABLE `userlog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `vetdoc`
 --
 ALTER TABLE `vetdoc`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `vetdoclog`
 --
 ALTER TABLE `vetdoclog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `vetdocspecialization`
