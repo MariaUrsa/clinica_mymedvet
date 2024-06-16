@@ -8,11 +8,11 @@ date_default_timezone_set('Europe/Bucharest');
 $currentTime = date( 'd-m-Y h:i:s A', time () );
 if(isset($_POST['submit']))
 {
-$sql=mysqli_query($con,"SELECT password FROM  users where password='".md5($_POST['cpass'])."' && id='".$_SESSION['id']."'");
+$sql=mysqli_query($con,"SELECT password FROM  users where password='".hash('sha256',$_POST['cpass'])."' && id='".$_SESSION['id']."'");
 $num=mysqli_fetch_array($sql);
 if($num>0)
 {
- $con=mysqli_query($con,"update users set password='".md5($_POST['npass'])."', updateDate='$currentTime' where id='".$_SESSION['id']."'");
+ $con=mysqli_query($con,"update users set password='".hash('sha256',$_POST['npass'])."', updateDate='$currentTime' where id='".$_SESSION['id']."'");
 $_SESSION['msg1']="Parola a fost schimbată cu succes!";
 }
 else
