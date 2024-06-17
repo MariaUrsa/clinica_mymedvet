@@ -1,16 +1,28 @@
 <?php
+
+// Include fișierul de configurare, care conține detalii despre baza de date și alte setări
 include_once('include/config.php');
+
+// Verifică dacă cererea a fost trimisă
 if(isset($_POST['submit']))
+
 {
+// Preia datele din cerere și le stochează în variabile
 $fname=$_POST['full_name'];
 $address=$_POST['address'];
 $city=$_POST['city'];
 $gender=$_POST['gender'];
 $email=$_POST['email'];
 $password=hash('sha256', $_POST['password']);
+
+// Construiește și execută interogarea SQL pentru a insera o nouă programare în baza de date
 $query=mysqli_query($con,"insert into users(fullname,address,city,gender,email,password) values('$fname','$address','$city','$gender','$email','$password')");
+
+// Verifică dacă interogarea a fost executată cu succes
 if($query)
 {
+
+// Afișează un mesaj de alertă dacă programarea a fost realizată cu succes
 	echo "<script>alert('Înregistrat cu succes. Vă puteți conecta acum.');</script>";
 	header('location:user-login.php');
 }
@@ -23,7 +35,8 @@ if($query)
 
 	<head>
 		<title>Înregistrare Utilizator</title>
-		
+	
+<!-- Include fonturi și stiluri -->		
 		<link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
 		<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" href="vendor/fontawesome/css/font-awesome.min.css">
@@ -52,13 +65,15 @@ return true;
 	</head>
 
 	<body class="login">
-		<!-- start: REGISTRATION -->
+
+<!-- start: INREGISTRARE -->
 		<div class="row">
 			<div class="main-login col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
 				<div class="logo margin-top-30">
 				<a href="../index.php"><h2> Clinica My Med Vet | Înregistrare Utilizator</h2></a>
 				</div>
-				<!-- start: REGISTER BOX -->
+
+<!-- start: CASETA DE ÎNREGISTRARE -->
 				<div class="box-register">
 					<form name="registration" id="registration"  method="post" onSubmit="return valid();">
 						<fieldset>
@@ -138,9 +153,11 @@ return true;
 					</div>
 
 				</div>
+<!-- sfarsit: CASETA DE ÎNREGISTRARE -->
 
 			</div>
 		</div>
+<!-- start: JAVASCRIPTS PRINICIPALE -->
 		<script src="vendor/jquery/jquery.min.js"></script>
 		<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 		<script src="vendor/modernizr/modernizr.js"></script>
@@ -148,31 +165,56 @@ return true;
 		<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 		<script src="vendor/switchery/switchery.min.js"></script>
 		<script src="vendor/jquery-validation/jquery.validate.min.js"></script>
+<!-- sfarsit: JAVASCRIPTS PRINICIPALE -->
+
+<!-- start: JAVASCRIPT-uri -->
 		<script src="customstyle/js/main.js"></script>
+
+<!-- start: JAVASCRIPT-uri logare-->
 		<script src="customstyle/js/login.js"></script>
+
+<!-- Script pentru inițializarea funcțiilor principale și elementelor formularului atunci când documentul este gata -->
+
 		<script>
 			jQuery(document).ready(function() {
+
+// Inițializează funcțiile principale definite în Main
 				Main.init();
+
+// Inițializează funcțiile principale definite în Login				
 				Login.init();
 			});
 		</script>
 		
 	<script>
 function userAvailability() {
+
+// Arată iconița de încărcare pentru a indica utilizatorului că verificarea este în desfășurare
 $("#loaderIcon").show();
 jQuery.ajax({
+
+// URL-ul către care se face cererea AJAX
 url: "check_availability.php",
+
+// Datele trimise în cerere, în acest caz adresa de email introdusă de utilizator în câmpul cu id-ul "email"
 data:'email='+$("#email").val(),
+
+// Metoda HTTP folosită pentru cererea AJAX, în acest caz POST
 type: "POST",
+
+// În caz de succes, se actualizează conținutul elementului cu id-ul "user-availability-status1" cu răspunsul primit de la server
 success:function(data){
 $("#user-availability-status1").html(data);
+
+// Ascunde iconița de încărcare după ce s-a primit răspunsul
 $("#loaderIcon").hide();
 },
+
+// Funcție goală pentru gestionarea erorilor de rețea sau de server
 error:function (){}
 });
 }
 </script>	
 		
 	</body>
-	<!-- end: BODY -->
 </html>

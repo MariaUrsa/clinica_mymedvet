@@ -1,13 +1,27 @@
 <?php
+// Începe o sesiune PHP
 session_start();
+
+// Dezactivează raportarea erorilor
 error_reporting(0);
+
+// Include fișierul de configurare
 include('include/config.php');
+
+// Verifică dacă utilizatorul este autentificat, altfel redirecționează la pagina de deconectare
 if(strlen($_SESSION['id']==0)) {
  header('location:logout.php');
   } else{
+
+// Verifică dacă a fost trimisă cererea de anulare a programării
+
 if(isset($_GET['cancel']))
 		  {
+// Execută interogarea SQL pentru a anula programarea și actualizează starea utilizatorului
+
 		          mysqli_query($con,"update appointment set userStatus='0' where id = '".$_GET['id']."'");
+
+// Setează un mesaj în sesiune
                   $_SESSION['msg']="Programarea a fost anulată";
 		  }
 ?>
@@ -15,7 +29,8 @@ if(isset($_GET['cancel']))
 <html lang="en">
 	<head>
 		<title>Utilizator | Istoric Programări</title>
-		
+
+<!-- Include fonturi și stiluri -->		
 		<link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
 		<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" href="vendor/fontawesome/css/font-awesome.min.css">
@@ -32,16 +47,20 @@ if(isset($_GET['cancel']))
 		<link rel="stylesheet" href="customstyle/css/themes/theme-1.css" id="skin_color" />
 	</head>
 	<body>
+
+<!-- start: SIDEBAR -->
 		<div id="app">		
 <?php include('include/sidebar.php');?>
 			<div class="app-content">
 				
-
+<!-- start: TOP NAVBAR -->
 					<?php include('include/header.php');?>
-				<!-- end: TOP NAVBAR -->
+
+<!-- sfarsit: TOP NAVBAR -->
 				<div class="main-content" >
 					<div class="wrap-content container" id="container">
-						<!-- start: PAGE TITLE -->
+
+<!-- start: TITLUL PAGINII -->
 						<section id="page-title">
 							<div class="row">
 								<div class="col-sm-8">
@@ -57,14 +76,16 @@ if(isset($_GET['cancel']))
 								</ol>
 							</div>
 						</section>
-						<!-- end: PAGE TITLE -->
-						<!-- start: BASIC EXAMPLE -->
+<!-- sfarsit: TITLUL PAGINII -->
+
+<!-- start: EXEMPLU -->
 						<div class="container-fluid container-fullw bg-white">
 						
 
 									<div class="row">
 								<div class="col-md-12">
-									
+
+ <!-- Afișează mesajul din sesiune -->
 									<p style="color:red;"><?php echo htmlentities($_SESSION['msg']);?>
 								<?php echo htmlentities($_SESSION['msg']="");?></p>	
 									<table class="table table-hover" id="sample-table-1">
@@ -83,8 +104,13 @@ if(isset($_GET['cancel']))
 										</thead>
 										<tbody>
 <?php
+
+// Execută interogarea SQL pentru a obține istoricul programărilor utilizatorului autentificat
+
 $sql=mysqli_query($con,"select vetdoc.vetdocName as vetdocName,appointment.*  from appointment join vetdoc on vetdoc.id=appointment.vetdocId where appointment.userId='".$_SESSION['id']."'");
 $cnt=1;
+
+// Parcurge rezultatele interogării și afișează programările
 while($row=mysqli_fetch_array($sql))
 {
 ?>
@@ -99,6 +125,9 @@ while($row=mysqli_fetch_array($sql))
 												</td>
 												<td><?php echo $row['postingDate'];?></td>
 												<td>
+
+// Afișează statusul programării
+
 <?php if(($row['userStatus']==1) && ($row['vetdocStatus']==1))  
 {
 	echo "Activ";
@@ -165,30 +194,32 @@ $cnt=$cnt+1;
 							</div>
 								</div>
 						
-						<!-- end: BASIC EXAMPLE -->
-						<!-- end: SELECT BOXES -->
+<!-- sfarsit: EXEMPLU -->
+<!-- sfarsit: SELECTAȚI CASETELE -->
 						
 					</div>
 				</div>
 			</div>
-			<!-- start: FOOTER -->
+
+<!-- start: FOOTER -->
 	<?php include('include/footer.php');?>
-			<!-- end: FOOTER -->
+<!-- sfarsit: FOOTER -->
 		
-			<!-- start: SETTINGS -->
+<!-- start: SETTINGS -->
 	<?php include('include/setting.php');?>
 			
-			<!-- end: SETTINGS -->
+<!-- sfarsit: SETTINGS -->
 		</div>
-		<!-- start: MAIN JAVASCRIPTS -->
+<!-- start: MAIN JAVASCRIPTS -->
 		<script src="vendor/jquery/jquery.min.js"></script>
 		<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 		<script src="vendor/modernizr/modernizr.js"></script>
 		<script src="vendor/jquery-cookie/jquery.cookie.js"></script>
 		<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 		<script src="vendor/switchery/switchery.min.js"></script>
-		<!-- end: MAIN JAVASCRIPTS -->
-		<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+<!-- sfarsit: MAIN JAVASCRIPTS -->
+
+<!-- start: JAVASCRIPT-uri NECESARE NUMAI PENTRU ACEASTĂ PAGINĂ -->
 		<script src="vendor/maskedinput/jquery.maskedinput.min.js"></script>
 		<script src="vendor/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
 		<script src="vendor/autosize/autosize.min.js"></script>
@@ -197,19 +228,28 @@ $cnt=$cnt+1;
 		<script src="vendor/select2/select2.min.js"></script>
 		<script src="vendor/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
 		<script src="vendor/bootstrap-timepicker/bootstrap-timepicker.min.js"></script>
-		<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-		<!-- start: CLIP-TWO JAVASCRIPTS -->
+<!-- sfarsit: JAVASCRIPT-uri NECESARE NUMAI PENTRU ACEASTĂ PAGINĂ -->
+
+<!-- start: JAVASCRIPT-uri -->
 		<script src="customstyle/js/main.js"></script>
-		<!-- start: JavaScript Event Handlers for this page -->
+
+<!-- start: JavaScript Event Handlers pentru această pagină -->
 		<script src="customstyle/js/form-elements.js"></script>
+
+<!-- Script pentru inițializarea funcțiilor principale și elementelor formularului atunci când documentul este gata -->
+
 		<script>
 			jQuery(document).ready(function() {
+
+// Inițializează funcțiile principale definite în Main
 				Main.init();
+
+// Inițializează elementele formularului definite în FormElements
 				FormElements.init();
 			});
 		</script>
-		<!-- end: JavaScript Event Handlers for this page -->
-		<!-- end: CLIP-TWO JAVASCRIPTS -->
+<!-- sfarsit: JavaScript Event Handlers pentru această pagină -->
+<!-- sfarsit: JAVASCRIPT-uri -->
 	</body>
 </html>
 <?php } ?>

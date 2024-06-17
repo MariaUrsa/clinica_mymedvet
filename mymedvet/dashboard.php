@@ -1,8 +1,17 @@
 <?php
+// Începe o sesiune PHP pentru a gestiona variabilele sesiunii
 session_start();
+
+// Dezactivează afișarea erorilor PHP pentru a asigura un flux de lucru fără erori vizibile utilizatorului
 //error_reporting(0);
+
+// Include fișierul de configurare care stabilește conexiunea cu baza de date și alte setări necesare
 include('include/config.php');
+
+// Include scriptul pentru verificarea autentificării utilizatorului
 include('include/checklogin.php');
+
+// Verifică dacă utilizatorul este autentificat; în caz contrar, va redirecționa către pagina de logout
 check_login();
 
 ?>
@@ -11,6 +20,7 @@ check_login();
 	<head>
 		<title>Utilizator  | Dashboard</title>
 		
+<!-- Include fonturi și stiluri -->
 		<link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
 		<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" href="vendor/fontawesome/css/font-awesome.min.css">
@@ -35,10 +45,11 @@ check_login();
 				
 						<?php include('include/header.php');?>
 						
-				<!-- end: TOP NAVBAR -->
+<!-- sfarsit: TOP NAVBAR -->
 				<div class="main-content" >
 					<div class="wrap-content container" id="container">
-						<!-- start: PAGE TITLE -->
+
+<!-- start: PAGINA TITLU -->
 						<section id="page-title">
 							<div class="row">
 								<div class="col-sm-8">
@@ -54,8 +65,9 @@ check_login();
 								</ol>
 							</div>
 						</section>
-						<!-- end: PAGE TITLE -->
-						<!-- start: BASIC EXAMPLE -->
+<!-- sfarsit: PAGINA TITLU -->
+
+<!-- start: EXEMPLU -->
 							<div class="container-fluid container-fullw bg-white">
 							<div class="row">
 								<div class="col-sm-4">
@@ -105,32 +117,32 @@ check_login();
 			
 					
 					
-						
+<!-- sfarsit: EXEMPLU -->						
 						
 					
-						<!-- end: SELECT BOXES -->
 						
 					</div>
 				</div>
 			</div>
-			<!-- start: FOOTER -->
+<!-- start: FOOTER -->
 	<?php include('include/footer.php');?>
-			<!-- end: FOOTER -->
+<!-- sfarsit: FOOTER -->
 		
-			<!-- start: SETTINGS -->
-	<?php include('include/setting.php');?>
-			<>
-			<!-- end: SETTINGS -->
+<!-- start: SETTINGS -->
+	<?php include('include/setting.php');?>	
+<!-- sfarsit: SETTINGS -->
 		</div>
-		<!-- start: MAIN JAVASCRIPTS -->
+
+<!-- start: MAIN JAVASCRIPT-uri -->
 		<script src="vendor/jquery/jquery.min.js"></script>
 		<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 		<script src="vendor/modernizr/modernizr.js"></script>
 		<script src="vendor/jquery-cookie/jquery.cookie.js"></script>
 		<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 		<script src="vendor/switchery/switchery.min.js"></script>
-		<!-- end: MAIN JAVASCRIPTS -->
-		<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+<!-- end: MAIN JAVASCRIPT-uri -->
+
+<!-- start: JAVASCRIPTS OBLIGATORIU NUMAI PENTRU ACEASTĂ PAGINĂ -->
 		<script src="vendor/maskedinput/jquery.maskedinput.min.js"></script>
 		<script src="vendor/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
 		<script src="vendor/autosize/autosize.min.js"></script>
@@ -139,18 +151,26 @@ check_login();
 		<script src="vendor/select2/select2.min.js"></script>
 		<script src="vendor/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
 		<script src="vendor/bootstrap-timepicker/bootstrap-timepicker.min.js"></script>
-		<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-		<!-- start: CLIP-TWO JAVASCRIPTS -->
+<!-- sfarsit: JAVASCRIPT-uri OBLIGATORIU NUMAI PENTRU ACEASTĂ PAGINĂ -->
+
+<!-- start:  JAVASCRIPT-uri -->
 		<script src="customstyle/js/main.js"></script>
-		<!-- start: JavaScript Event Handlers for this page -->
+
+<!-- start: JavaScript Handlers pentru această pagină -->
 		<script src="customstyle/js/form-elements.js"></script>
 		<script>
+
+	// Această secțiune de cod asigură că toate funcțiile sunt apelate doar după ce documentul HTML este complet încărcat în browser.
+	//se declanșează când întregul DOM este gata pentru manipulare
+
 			jQuery(document).ready(function() {
-				Main.init();
-				FormElements.init();
+    // Inițializează funcționalitățile principale ale aplicației
+			Main.init(); 
+   // Inițializează manipularea elementelor de formular
+    		FormElements.init();
 			});
 		</script>
-		<!-- end: JavaScript Event Handlers for this page -->
-		<!-- end: CLIP-TWO JAVASCRIPTS -->
+<!-- sfarsit: JavaScript Event Handlers pentru această pagină -->
+<!-- sfarsit: JAVASCRIPT-uri -->
 	</body>
 </html>

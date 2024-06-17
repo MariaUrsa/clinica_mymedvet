@@ -1,28 +1,47 @@
 <?php
+
+// Începe o sesiune nouă sau reia o sesiune existentă
 session_start();
+
+// Dezactivează raportarea erorilor
 error_reporting(0);
+
+// Include fișierul de configurare, care conține detalii despre baza de date și alte setări
 include('include/config.php');
+
+// Include fișierul pentru verificarea autentificării utilizatorului
 include('include/checklogin.php');
+
+// Apelul funcției pentru verificarea autentificării utilizatorului
 check_login();
+
+// Verifică dacă cererea a fost trimisă
 if(isset($_POST['submit']))
   {
-    
+ 
+// Preia datele din formular 
     $vid=$_GET['viewid'];
     $pl=$_POST['pl'];
     $br=$_POST['br'];
     $weight=$_POST['weight'];
     $temp=$_POST['temp'];
-   $pres=$_POST['pres'];
+    $pres=$_POST['pres'];
    
- 
+ // Construiește și execută interogarea SQL pentru a insera o nouă programare în baza de date
       $query.=mysqli_query($con, "insert   tblmedicalhistory(PatientID,Pulse,Breathe,Weight,Temperature,MedicalPres)value('$vid','$pl','$br','$weight','$temp','$pres')");
+
+ // Verifică dacă interogarea a fost executată cu succes     
     if ($query) {
+
+// Afișează un mesaj de alertă dacă programarea a fost realizată cu succes
     echo '<script>alert("A fost adăugat Istoricul Medical.")</script>';
     echo "<script>window.location.href ='manage-patient.php'</script>";
   }
   else
     {
-      echo '<script>alert("Ceva nu a mers bine. Vă rugăm să încercați din nou!")</script>';
+
+// Afișează un mesaj de alertă dacă programarea nu a fost realizată cu succes
+    echo '<script>alert("Ceva nu a mers bine. Vă rugăm să încercați din nou!")</script>';
     }
 
   
@@ -33,7 +52,8 @@ if(isset($_POST['submit']))
 <html lang="en">
 	<head>
 		<title>Utilizator | Istoric Medical</title>
-		
+
+<!-- Include fonturi și stiluri -->	
 		<link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
 		<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" href="vendor/fontawesome/css/font-awesome.min.css">
@@ -49,6 +69,8 @@ if(isset($_POST['submit']))
 		<link rel="stylesheet" href="customstyle/css/plugins.css">
 		<link rel="stylesheet" href="customstyle/css/themes/theme-1.css" id="skin_color" />
 	</head>
+
+
 	<body>
 		<div id="app">		
 <?php include('include/sidebar.php');?>
@@ -56,7 +78,9 @@ if(isset($_POST['submit']))
 <?php include('include/header.php');?>
 <div class="main-content" >
 <div class="wrap-content container" id="container">
-						<!-- start: PAGE TITLE -->
+
+
+<!-- start: PAGINA TITLU  -->
 <section id="page-title">
 <div class="row">
 <div class="col-sm-8">
@@ -72,16 +96,28 @@ if(isset($_POST['submit']))
 </ol>
 </div>
 </section>
+<!-- sfarsit: PAGINA TITLU -->
+
 <div class="container-fluid container-fullw bg-white">
 <div class="row">
 <div class="col-md-12">
 <h5 class="over-title margin-bottom-15">Utilizatori <span class="text-bold">Istoric Medical</span></h5>
+
 <?php
-                               $vid=$_GET['viewid'];
-                               $ret=mysqli_query($con,"select * from tblpatient where ID='$vid'");
+
+//parametru este transmis prin metoda GET (prin intermediul URL-ului) și este utilizat pentru a identifica pacientul pe care dorim să-l vizualizăm în detaliu
+        $vid=$_GET['viewid'];
+
+//interogarea este folosită pentru a extrage informațiile pacientului specificat în URL
+        $ret=mysqli_query($con,"select * from tblpatient where ID='$vid'");
+
 $cnt=1;
+
+//parcurge fiecare rând din rezultatele interogării și returnează următorul rând sub formă de array asociativ în variabila $row.
 while ($row=mysqli_fetch_array($ret)) {
-                               ?>
+?>
+
+
 <table border="1" class="table table-bordered">
  <tr align="center">
 <td colspan="4" style="font-size:20px;color:blue">
@@ -117,6 +153,7 @@ while ($row=mysqli_fetch_array($ret)) {
 </table>
 <?php  
 
+//interogarea este folosită pentru a extrage informațiile pacientului din tblmedicalhistory
 $ret=mysqli_query($con,"select * from tblmedicalhistory  where PatientID='$vid'");
 
 
@@ -136,6 +173,8 @@ $ret=mysqli_query($con,"select * from tblmedicalhistory  where PatientID='$vid'"
 <th>Dată Consultație</th>
 </tr>
 <?php  
+
+//parcurgerea rezultatele interogării
 while ($row=mysqli_fetch_array($ret)) { 
   ?>
 <tr>
@@ -160,22 +199,25 @@ while ($row=mysqli_fetch_array($ret)) {
 </div>
 			<!-- start: FOOTER -->
 	<?php include('include/footer.php');?>
-			<!-- end: FOOTER -->
+			<!-- sfarsit: FOOTER -->
 		
 			<!-- start: SETTINGS -->
 	<?php include('include/setting.php');?>
 			
-			<!-- end: SETTINGS -->
+			<!-- sfarsit: SETTINGS -->
+
+
 		</div>
-		<!-- start: MAIN JAVASCRIPTS -->
+		<!-- start: MAIN JAVASCRIPT-uri -->
 		<script src="vendor/jquery/jquery.min.js"></script>
 		<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 		<script src="vendor/modernizr/modernizr.js"></script>
 		<script src="vendor/jquery-cookie/jquery.cookie.js"></script>
 		<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 		<script src="vendor/switchery/switchery.min.js"></script>
-		<!-- end: MAIN JAVASCRIPTS -->
-		<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+		<!-- sfarsit: MAIN JAVASCRIPT-uri -->
+
+		<!-- start: JAVASCRIPTS OBLIGATORII NUMAI PENTRU ACEASTĂ PAGINĂ -->
 		<script src="vendor/maskedinput/jquery.maskedinput.min.js"></script>
 		<script src="vendor/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
 		<script src="vendor/autosize/autosize.min.js"></script>
@@ -184,18 +226,28 @@ while ($row=mysqli_fetch_array($ret)) {
 		<script src="vendor/select2/select2.min.js"></script>
 		<script src="vendor/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
 		<script src="vendor/bootstrap-timepicker/bootstrap-timepicker.min.js"></script>
-		<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-		<!-- start: CLIP-TWO JAVASCRIPTS -->
+		<!-- end: JAVASCRIPTS OBLIGATORII NUMAI PENTRU ACEASTĂ PAGINĂ -->
+
+		<!-- start:  JAVASCRIPT-uri -->
 		<script src="customstyle/js/main.js"></script>
-		<!-- start: JavaScript Event Handlers for this page -->
+
+		<!-- start: JavaScript Event Handlers pentru această pagină -->
 		<script src="customstyle/js/form-elements.js"></script>
+
+		<!-- Script pentru inițializarea funcțiilor principale și elementelor formularului atunci când documentul este gata -->
 		<script>
 			jQuery(document).ready(function() {
+
+// Inițializează funcțiile principale definite în Main
 				Main.init();
+
+// Inițializează elementele formularului definite în FormElements
 				FormElements.init();
 			});
 		</script>
-		<!-- end: JavaScript Event Handlers for this page -->
-		<!-- end: CLIP-TWO JAVASCRIPTS -->
+
+		<!-- sfarsit: JavaScript Event Handlers pentru această pagină -->
+
+		<!-- sfarsit: JAVASCRIPT-uri -->
 	</body>
 </html>

@@ -1,16 +1,28 @@
 <?php
+// Începe o sesiune nouă sau reia o sesiune existentă
 session_start();
+
+// Dezactivează raportarea erorilor
 //error_reporting(0);
+
+// Include fișierul de configurare, care conține detalii despre baza de date și alte setări
 include("include/config.php");
-// Code for updating Password
+
+// Verifică dacă Parola a fost resetată
 if(isset($_POST['change']))
 {
 $name=$_SESSION['name'];
 $email=$_SESSION['email'];
 $newpassword=hash('sha256', $_POST['password']);
+
+// Actualizează și execută interogarea SQL pentru a insera o nouă programare în baza de date
 $query=mysqli_query($con,"update users set password='$newpassword' where fullName='$name' and email='$email'");
+
+// Verifică dacă interogarea a fost executată cu succes
 if ($query) {
 echo "<script>alert('Parola a fost actualizată cu succes.');</script>";
+
+// Afișează un mesaj de alertă dacă programarea a fost realizată cu succes
 echo "<script>window.location.href ='user-login.php'</script>";
 }
 
@@ -24,7 +36,8 @@ echo "<script>window.location.href ='user-login.php'</script>";
 <html lang="en">
 	<head>
 		<title>Resetare Parolă</title>
-		
+
+<!-- Include fonturi și stiluri -->	
 		<link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
 		<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" href="vendor/fontawesome/css/font-awesome.min.css">
@@ -39,14 +52,26 @@ echo "<script>window.location.href ='user-login.php'</script>";
 				<script type="text/javascript">
 function valid()
 {
+//Verifică dacă valoarea din câmpul 'password' coincide cu valoarea din câmpul 'password_again'
+
  if(document.passwordreset.password.value!= document.passwordreset.password_again.value)
 {
+
+//Dacă nu coincid, afișează o alertă cu un mesaj corespunzător
 alert("Câmpul Parolă și Confirmare Parolă nu se potrivesc!");
+
+//Setează focusul pe câmpul 'password_again' pentru a permite utilizatorului să corecteze eroarea
 document.passwordreset.password_again.focus();
+
+// Returnează 'false' pentru a opri trimiterea formularului, dacă nu coincid
 return false;
 }
+
+// Dacă parola este confirmată corect, returnează 'true' pentru a permite trimiterea formularului
 return true;
 }
+
+
 </script>
 	</head>
 	<body class="login">
@@ -104,6 +129,8 @@ return true;
 
 			</div>
 		</div>
+
+<!-- start: JAVASCRIPT-uri PRINICIPALE -->		
 		<script src="vendor/jquery/jquery.min.js"></script>
 		<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 		<script src="vendor/modernizr/modernizr.js"></script>
@@ -111,17 +138,27 @@ return true;
 		<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 		<script src="vendor/switchery/switchery.min.js"></script>
 		<script src="vendor/jquery-validation/jquery.validate.min.js"></script>
-	
+<!-- sfarsit: JAVASCRIPT-uri PRINICIPALE -->	
+
+<!-- start: JAVASCRIPT-uri -->
 		<script src="customstyle/js/main.js"></script>
 
+<!-- start: JAVASCRIPT-uri logare-->
 		<script src="customstyle/js/login.js"></script>
+
+
+<!-- Script pentru inițializarea funcțiilor principale și elementelor formularului atunci când documentul este gata -->
+
 		<script>
 			jQuery(document).ready(function() {
+
+// Inițializează funcțiile principale definite în Main
 				Main.init();
+
+// Inițializează funcțiile principale definite în Login				
 				Login.init();
 			});
-		</script>
-	
+	</script>
+
 	</body>
-	<!-- end: BODY -->
 </html>
