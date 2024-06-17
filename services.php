@@ -1,13 +1,31 @@
 <?php
+
+// Include fișierul de configurare, care conține detalii de conectare la baza de date
+
 include_once('mymedvet/include/config.php');
+
+// Verifică dacă formularul a fost trimis
+
 if(isset($_POST['submit']))
 {
+
+// Preia datele introduse de utilizator din formular
+
 $name=$_POST['fullname'];
 $email=$_POST['emailid'];
 $mobileno=$_POST['mobileno'];
 $dscrption=$_POST['description'];
+
+// Execută interogarea SQL pentru a insera datele în tabela tblcontactus
+
 $query=mysqli_query($con,"insert into tblcontactus(fullname,email,phoneNumber,message) value('$name','$email','$mobileno','$dscrption')");
+
+// Afișează un mesaj de succes utilizatorului
+
 echo "<script>alert('Informațile au fost adăugate cu succes.');</script>";
+
+// Redirecționează utilizatorul către pagina principală
+
 echo "<script>window.location.href ='index.php'</script>";
 
 } ?>
@@ -15,9 +33,13 @@ echo "<script>window.location.href ='index.php'</script>";
 <html lang="en">
 
 <head>
+<!-- Meta taguri pentru a defini setul de caractere și a face pagina responsiv -->
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title> Clinica - My Med Vet </title>
+
+<!-- Linkuri către fișierele CSS externe -->
 
     <link rel="shortcut icon" href="customstyle/images/icon.png">
     <link rel="stylesheet" href="customstyle/css/bootstrap.min.css">
@@ -36,10 +58,13 @@ echo "<script>window.location.href ='index.php'</script>";
 <section class="top-bar d-flex align-items-center fixed-top">
         <div class="container d-flex justify-content-between">
             <div class="contact-info d-flex align-items-center">
+
+<!-- Informații de contact -->
                 <i class="fas fa-envelope"></i> <a href="mailto:info.mymedvet@gmail.com">info.mymedvet@gmail.com</a>
                 <i class="fas fa-phone"></i> +40 771 222 333
                 <i class="fas fa-calendar-alt"></i> 07:00-20:00 (Luni-Vineri) | 08:00 - 14:00 (Sâmbătă) | Urgențe (Duminică)
             </div>
+<!-- Linkuri către rețelele sociale -->
             <div class="d-none d-lg-flex social-links align-items-center">
                 <a href="https://www.facebook.com/" target="_blank" class="facebook"><i class="fab fa-facebook"></i></a>
                 <a href="https://www.instagram.com/" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
