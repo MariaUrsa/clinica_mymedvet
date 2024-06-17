@@ -25,6 +25,7 @@ $city=$_POST['city'];
 $gender=$_POST['gender'];
 
 // Actualizează numele, adresa, orașul și gen-ul în baza de date pentru utilizatorul autentificat în sesiunea curentă
+
 $sql=mysqli_query($con,"update users set fullName='$fname',address='$address',city='$city',gender='$gender' where id='".$_SESSION['id']."'");
 
 // Verifică dacă interogarea MySQL pentru actualizarea adresei de email s-a efectuat cu succes
@@ -108,9 +109,10 @@ $msg="Profilul s-a actualizat cu succes!";
 $sql=mysqli_query($con,"select * from users where id='".$_SESSION['id']."'");
 while($data=mysqli_fetch_array($sql))
 {
-?>
 
 //Afișează datele utilizatorului, folosind funcția htmlentities() pentru a asigura că orice caractere HTML speciale sunt convertite în entități HTML sigure, prevenind astfel atacurile (Cross-Site Scripting).
+?>
+
 <h4>Profil <?php echo htmlentities($data['fullName']);?> </h4>
 <p><b>Data de Înregistrare Profil: </b><?php echo htmlentities($data['regDate']);?></p>
 <?php if($data['updateDate']){?>

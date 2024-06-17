@@ -101,7 +101,7 @@ if(isset($_POST['submit']))
 <div class="container-fluid container-fullw bg-white">
 <div class="row">
 <div class="col-md-12">
-<h5 class="over-title margin-bottom-15">Utilizatori <span class="text-bold">Istoric Medical</span></h5>
+<h5 class="over-title margin-bottom-15">Pacienti <span class="text-bold">Istoric Medical</span></h5>
 
 <?php
 
@@ -121,7 +121,7 @@ while ($row=mysqli_fetch_array($ret)) {
 <table border="1" class="table table-bordered">
  <tr align="center">
 <td colspan="4" style="font-size:20px;color:blue">
- Detalii Utilizator</td></tr>
+ Detalii Pacient</td></tr>
 
     <tr>
     <th scope>Nume Pacient</th>

@@ -117,7 +117,7 @@ while($row=mysqli_fetch_array($sql))
 </td>
 <td>
 
-//Un buton este creat pentru fiecare rând al tabelului, care duce utilizatorul către pagina view-medhistory.php pentru a vizualiza detaliile medicale ale pacientului cu ID-ul specificat ($row['ID']).
+
 <a href="view-medhistory.php?viewid=<?php echo $row['ID'];?>" class="btn btn-info btn-sm">Vizualizare Detalii</a>
 
 </td>
