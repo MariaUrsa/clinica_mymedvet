@@ -16,9 +16,9 @@ Detalii de conectare:
 
 admin : admin / Admin*123
 
-user: ioana.marinescu@gmail.com / Ioana*123
-
 ***Vetdoc Panel : localhost/Clinica-MyMedVet/mymedvet/doctor/
 
 vetdoc: gruia.mymedvet@gmail.com / Gruia*963
 
+din aplicatia web de la sectiunea Logare
+user: ioana.marinescu@gmail.com / Ioana*123
