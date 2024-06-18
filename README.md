@@ -16,7 +16,7 @@ Detalii de conectare:
 
 admin : admin / Admin*123
 
-***Vetdoc Panel : localhost/Clinica-MyMedVet/mymedvet/doctor/
+***Vetdoc Panel : localhost/Clinica-MyMedVet/mymedvet/doctor/ sau din aplicatia web de la sectiunea Logare
 
 vetdoc: gruia.mymedvet@gmail.com / Gruia*963
 
