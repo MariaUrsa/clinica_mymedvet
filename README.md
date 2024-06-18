@@ -21,4 +21,5 @@ admin : admin / Admin*123
 vetdoc: gruia.mymedvet@gmail.com / Gruia*963
 
 din aplicatia web de la sectiunea Logare
+
 user: ioana.marinescu@gmail.com / Ioana*123
