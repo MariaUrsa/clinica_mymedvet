@@ -10,9 +10,15 @@ Se va folosi PHP și MySQL
 6. Importați clinica_mymedvet_db.sql fișier (dat în interiorul pachetului zip în folderul de fișiere SQL)
 7. Rulați scriptul http://localhost/Clinica-MyMedVet (frontend)
    
-Detalii de conectare
+Detalii de conectare:
+
+***Admin Panel : localhost/Clinica-MyMedVet/mymedvet/admin/
+
 admin : admin / Admin*123
 
 user: ioana.marinescu@gmail.com / Ioana*123
 
+***Vetdoc Panel : localhost/Clinica-MyMedVet/mymedvet/doctor/
+
 vetdoc: gruia.mymedvet@gmail.com / Gruia*963
+
