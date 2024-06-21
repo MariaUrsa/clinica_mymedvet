@@ -1,4 +1,4 @@
-Cum se execută proiectul de gestionare a unei clinici veterinare - Clinica My Med Vet
+Cum se execută proiectul unei clinici veterinare - Clinica My Med Vet
 
 Se va folosi PHP și MySQL
 
