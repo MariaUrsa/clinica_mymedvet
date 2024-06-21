@@ -1,6 +1,8 @@
-Cum se execută proiectul unei clinici veterinare - Clinica My Med Vet
+Cum se execută proiectul de gestiune a unei clinici veterinare - Clinica My Med Vet
 
-Se va folosi PHP și MySQL
+Se va folosi programul XAMPP, ce poate fi instalat dupa descarcarea acestuia de pe pagina https://www.apachefriends.org/download.html.
+
+Dupa instalarea si configurarea programului XAMPP, se va folosi PHP si MySQL.
 
 1. Descărcați fișierul zip
 2. Extrageți fișierul și copiați dosarul Clinica-MyMedVet
@@ -10,7 +12,9 @@ Se va folosi PHP și MySQL
 6. Importați clinica_mymedvet_db.sql fișier (dat în interiorul pachetului zip în folderul de fișiere SQL)
 7. Rulați scriptul http://localhost/Clinica-MyMedVet (frontend)
    
-Detalii de conectare:
+Partea de frontend a aplicatiei poate fi vizualizata fara a ne autentifica, deoarece este interfata pentru toti utilizatorii 
+   
+Detalii de conectare pentru autentificare:
 
 ***Admin Panel : localhost/Clinica-MyMedVet/mymedvet/admin/
 
