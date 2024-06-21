@@ -24,6 +24,7 @@ echo "<script>alert('Informațile dumneavoastră au fost transmise cu succes');<
 echo "<script>window.location.href ='index.php'</script>";
 
 } ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -137,11 +138,9 @@ echo "<script>window.location.href ='index.php'</script>";
             </a>
             <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Următorul</span>
+                <span class="sr-only">Următor</span>
             </a>
         </div>
-
-
     </div>
 
 <!-- ################# Despre Noi #######################--->
@@ -169,12 +168,7 @@ echo "<script>window.location.href ='index.php'</script>";
     <p><?php  echo $row['PageDescription'];?></p><?php } ?>
 
             </div>
-
-
-
         </div>
-
-
     </section>       
 
 <!-- ################# Servicii #######################--->
@@ -232,13 +226,10 @@ echo "<script>window.location.href ='index.php'</script>";
                     <div class="single-key">
                         <a href="services.php"><i class="far fa-thumbs-up"></i></a>
                         <h5><a href="services.php" target="_blank">Stomatologie și Estetică</a></h5>
-
                     </div>
                 </div>
             </div>
-
         </div>
-
     </section>
     
 <!-- ################# Plan Asigurare #######################--->
@@ -247,8 +238,8 @@ echo "<script>window.location.href ='index.php'</script>";
     <div class="container">
         <div class="inner-title">
         <h2>Plan de Asigurare - Petcover</h2>
-        <p>Asigurati animalul de companie pentru orice eventualitate (preventie sau boala)</p>
-        <p>Dacă sunteți interesat sunați-ne sau vă așteptăm la o discuție cu doc. veterinar </p>
+        <p>Asigurăți animalul de companie pentru orice eventualitate (prevenție sau boală)</p>
+        <p>Dacă sunteți interesat sunați-ne sau faceți o programare cu medicul veterinar </p>
       </div>
          <div class="row">
 
@@ -336,18 +327,11 @@ echo "<script>window.location.href ='index.php'</script>";
                             <h6>59 Lei/ lună</h6>
                         </div>
                     </div>
-
-
                 </div>
             </div>
-
-
             </div>
-
         </div>
-
     </div>
-
 
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
@@ -376,7 +360,6 @@ echo "<script>window.location.href ='index.php'</script>";
             <button class="btn btn-default filter-button" data-filter="irrigation">Consultații</button>
         </div>
         <br/>
-
 
 
             <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter hdpe">
@@ -426,10 +409,8 @@ echo "<script>window.location.href ='index.php'</script>";
             <div class="gallery_product col-lg-4 col-md-4 col-sm-4 col-xs-6 filter irrigation">
                 <img src="customstyle/images/galerie\108_consult_iepuri.jpg" class="img-responsive">
             </div>
-
         </div>
-    </div>
-       
+    </div>  
        </div>
 
     <!-- ################# Contact #######################--->
@@ -445,7 +426,7 @@ echo "<script>window.location.href ='index.php'</script>";
                 <form method="post">
 
                     <div class="row cf-ro">
-                        <div  class="col-sm-4"><label>Introduceți Numele :</label></div>
+                        <div  class="col-sm-4"><label> Nume / Prenume :</label></div>
                         <div class="col-sm-8"><input type="text" placeholder="Nume/Prenume complet" name="fullname" class="form-control input-sm" required ></div>
                     </div>
 
@@ -457,20 +438,20 @@ echo "<script>window.location.href ='index.php'</script>";
                      <div  class="row cf-ro">
                         <div  class="col-sm-4"><label>Număr Telefon:</label></div>
                         <div class="col-sm-8">
-                        <input type="text" name="mobileno" placeholder="Numar telefon mobil sau fix" class="form-control input-sm" required ></div>
+                        <input type="text" name="mobileno" placeholder="Număr telefon" class="form-control input-sm" required ></div>
                     </div>
 
                     <div  class="row cf-ro">
-                        <div  class="col-sm-4"><label>Introduceți Mesajul:</label></div>
+                        <div  class="col-sm-4"><label>Introdu Mesajul:</label></div>
                         <div class="col-sm-8">
-                          <textarea rows="5" placeholder="Scrieti-ne despre ce este vorba" class="form-control input-sm" name="description" required></textarea>
+                          <textarea rows="5" placeholder="Scrie-ne despre ce este vorba" class="form-control input-sm" name="description" required></textarea>
                         </div>
                     </div>
 
                      <div  class="row cf-ro">
                         <div  class="col-sm-4"></div>
                         <div class="col-sm-5">
-                         <button class="btn btn-success btn-sm" type="submit" name="submit">Trimite-ti Mesajul</button>
+                         <button class="btn btn-success btn-sm" type="submit" name="submit">Trimite Mesajul</button>
                         </div>
                     </div>
             </form>
@@ -480,7 +461,7 @@ echo "<script>window.location.href ='index.php'</script>";
 
             <div  class="col-sm-12 mt-5 mb-4">
                 <h3>Locație Hartă</h3>
-                <p>Str. Magherean nr. 17, Arad, 310241 Romania</p>
+                <p>Str. Măgheran nr. 17, Arad, 310241 România</p>
         <br>
         <div class="mapouter"><div class="gmap_canvas"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2764.1349155816124!2d21.333068099999995!3d46.148059499999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x474599414d2d86bf%3A0x9c7c5c4d97b319de!2sStrada%20Magherean%2017%2C%20Arad%2C%20Rum%C3%A4nien!5e0!3m2!1sde!2sde!4v1716836109608!5m2!1sde!2sde" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
@@ -489,10 +470,11 @@ echo "<script>window.location.href ='index.php'</script>";
         </div>
         </section>
 
-    <!-- ################# Logare #######################--->
+        <!-- ################# Logare #######################--->
     
     
      <section id="logins" class="our-blog container-fluid flex">
+
         <div class="container">
         <div class="inner-title">
 
@@ -500,62 +482,38 @@ echo "<script>window.location.href ='index.php'</script>";
             </div>
             <div class="col-sm-12 blog-cont">
                 <div class="row no-margin">
-                    <div class="col-sm-4 blog-smk">
+                    <div class="col-sm-6 blog-smk">
                         <div class="blog-single">
 
                                 <img src="customstyle/images/client5.jpg" alt="">
 
                             <div class="blog-single-det">
-                                <h6>Cont Client</h6>
+                                <h4>Cont Client</h4>
                                 <a href="mymedvet/user-login.php" target="_blank">
-                                    <button class="btn btn-success btn-sm">Apasa aici</button>
+                                    <button class="btn btn-success btn-sm">Apasă aici</button>
                                 </a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-sm-4 blog-smk">
+                    <div class="col-sm-6 blog-smk">
                         <div class="blog-single">
 
                                 <img src="customstyle/images/docvet.jpg" alt="">
 
                             <div class="blog-single-det">
-                                <h6>Cont Veterinar</h6>
+                                <h6>Cont Medic Veterinar</h6>
                                 <a href="mymedvet/doctor" target="_blank">
-                                    <button class="btn btn-success btn-sm">Apasa aici</button>
+                                    <button class="btn btn-success btn-sm">Apasă aici</button>
                                 </a>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="col-sm-4 blog-smk">
-                        <div class="blog-single">
-
-                                <img src="customstyle/images/admin1.png" alt="">
-
-                            <div class="blog-single-det">
-                                <h6>Cont Admin</h6>
-                    
-                                <a href="mymedvet/admin" target="_blank">
-                                    <button class="btn btn-success btn-sm">Apasa aici</button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-                </div>
-
-
-            </div>
-            
+              </div>
+            </div>         
         </div>
-
-
     </section>  
-    
 
-    
     
     <!-- ################# Footer #######################--->
 
@@ -624,7 +582,7 @@ echo "<script>window.location.href ='index.php'</script>";
     
     </body>
 
-    <!-- Inclusiv scripturile necesare -->
+    <!-- scripturile necesare -->
 
 <script src="customstyle/js/jquery-3.2.1.min.js"></script>
 <script src="customstyle/js/popper.min.js"></script>
